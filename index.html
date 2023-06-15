@@ -1,0 +1,311 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Timeline | items | Background areas with groups</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600,700" rel="stylesheet">	
+  <style>
+    body, html {
+      font-family: 'Roboto', arial, sans-serif;
+      font-size: 16px;
+    }
+.vis-item .vis-item-content {
+    overflow: visible !important;
+    white-space: normal !important;
+    text-align:center;
+    padding:8px 12px!important;
+  }
+
+.vis-time-axis .vis-text {font-size:28px;}
+.vis-labelset .vis-label .vis-inner {
+font-size: 20px;
+font-weight: 500;
+}
+.vis-item.vis-range{border:0;}
+.vis-item.vis-box{border:0;}
+.vis-foreground .vis-group {
+    border-bottom: 1px solid #e5e5e5!important;}
+.vis-labelset .vis-label {
+  width: 200px !important;  /* you can adjust this value */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vis-item .vis-item-overflow{text-align:center;}
+
+.vis-timeline{border-top:0!important; border-left:0!important; border-right:0!important; border-bottom:0!important;}
+
+.vis-label.vis-group-level-0:first-of-type {
+    border-bottom: none !important;
+}
+
+.vis-panel.vis-top{border-left-style:none!important;}
+
+.vis-item.vis-box{border-radius:8px!important;}
+.vis-item.vis-range{border-radius:8px!important;}
+.vis-label.vis-group-level-0:nth-of-type(2),
+.vis-label.vis-group-level-0:nth-of-type(3) {
+    border-bottom: none !important;
+}
+
+
+.vis-label.vis-group-level-0:nth-of-type(4) {
+    border-bottom: none !important;
+}
+
+.vis-label.vis-group-level-0:nth-of-type(6) {
+    border-bottom: none !important;
+}
+
+.vis-label.vis-group-level-0:nth-of-type(7) {
+    border-bottom: none !important;
+}
+
+.vis-label.vis-group-level-0:nth-of-type(8) {
+    border-bottom: none !important;
+}
+
+.vis-label.vis-group-level-0:nth-of-type(10) {
+    border-bottom: none !important;
+}
+
+.vis-label.vis-group-level-0:nth-of-type(11) {
+    border-bottom: none !important;
+}
+
+.vis-label.vis-group-level-0:nth-of-type(12) {
+    border-bottom: none !important;
+}
+
+ .vis-group:nth-child(1) .vis-item {
+    background-color: #fde047;
+  }
+
+ .vis-group:nth-child(2) .vis-item {
+    background-color: #fde047;
+  }
+
+ .vis-group:nth-child(3) .vis-item {
+    background-color: #fde047;
+  }
+
+.vis-group:nth-child(4) .vis-item {
+    background-color: #fde047;
+  }
+
+.vis-group:nth-child(5) .vis-item {
+    background-color: #fde047;
+  }
+.vis-group:nth-child(6) .vis-item {
+    background-color: #ef4444; color:#ffffff;
+  }
+.vis-group:nth-child(7) .vis-item {
+    background-color: #ef4444; color:#ffffff;
+  }
+.vis-group:nth-child(8) .vis-item {
+    background-color: #ef4444; color:#ffffff;
+  }
+.vis-group:nth-child(9) .vis-item {
+    background-color: #ef4444; color:#ffffff;
+  }
+
+  </style>
+
+  <script src="https://visjs.github.io/vis-timeline/standalone/umd/vis-timeline-graph2d.min.js"></script>
+  <link href="https://visjs.github.io/vis-timeline/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+  
+</head>
+<body>
+
+<h1>Climate Promise timeline</h1>
+<div id="visualization"></div>
+
+<script>
+  var items = new vis.DataSet([
+    {id: 1, content: 'UNDP and GEF sign Trust<br/>Fund Agreement 1991', start: '1991-01-01', group: 1},
+    {id: 2, content: 'Supporting national<br/>communications and NAP/As (1998-2000s)', start: '1998-01-01', end: '2000-01-01', group: 2},
+    {id: 3, content: 'Bo Lim creates global framework<br/>for adaptation policy 2004', start: '2004-01-01', group: 3},
+    {id: 4, content: 'National comms 2004 ish', start: '2004-01-01', group: 1},
+    {id: 5, content: 'Unique expertise on climate policy', start: '2004-01-01', group: 2},
+    {id: 6, content: 'Security council involved in climate since 2007.<br/>2017  C+S brought back by Sweden', start: '2007-01-01', group: 3},
+    {id: 7, content: '2008 - UNREDD Programme launched (later<br/>became Climate and Forests) 2018', start: '2008-01-01', group: 1},
+    {id: 8, content: 'Sustained capacity building on climate', start: '2008-01-01', group: 2},
+    {id: 9, content: '2008/9 - UNDP recognising and owning space on climate', start: '2008-01-01', group: 3},
+    {id: 10, content: '2008/2010 Boots on the ground. Capacity development for policy makers', start: '2008-01-01', end: '2010-01-01', group: 2},
+    {id: 11, content: 'Cancun repair and process 2010', start: '2010-01-01', group: 3},
+    {id: 12, content: 'AECID-LAC Programa LAC de Carbono 2010 - now', start: '2010-01-01', group: 3},
+    {id: 13, content: 'Low emission capacity building programme (2011-16)', start: '2011-01-01', end: '2016-01-01', group: 1},
+    {id: 14, content: 'INDC dialogues 2014', start: '2014-01-01', group: 2},
+    {id: 15, content: 'NAPAs. $1B raised in LOCF/SCCF.<br/>GCF 1st gen programming 2015 - 1016', start: '2015-01-01', end: '2016-01-01', group: 3},
+    {id: 16, content: 'First gen NDCs submitted and some LTS', start: '2015-01-01', group: 1},
+    {id: 17, content: 'Gender equality integration into the PA and NDCs dialogues.<br/>Pushing for a strong focus at the policy level / NDCS', start: '2015-01-01', group: 2},
+    {id: 18, content: 'Equator prize at COP17 (Paris)', start: '2015-01-01', group: 3},
+    {id: 20, content: 'Climate + SDG nexus', start: '2015-06-01', group: 2},
+    {id: 21, content: 'NDC implementation starts! 2016-17 - LECB NAMAS - EU-NDC project - NDC Support Programme', start: '2016-01-01', end: '2017-01-01', group: 1},
+    {id: 22, content: 'UNDP accredited to GCF 2016', start: '2016-01-01', group: 3},
+    {id: 23, content: 'NDC Support Programme 2017-23', start: '2017-01-01', end: '2023-01-01', group: 2},
+    {id: 24, content: 'UNDP Engagement at UNFCCC COPS 2017 - 2019', start: '2017-01-01', end: '2019-01-01', group: 1},
+    {id: 25, content: 'Leadership transition Yamil -> Cassie', start: '2019-01-01', group: 2},
+    {id: 26, content: 'Launch of Climate Promise 2019', start: '2019-01-01', group: 1},
+{id: 27, content: 'Heat is on report 2019', start: '2019-01-01', group: 2},
+{id: 28, content: 'Transition to enhanced transparency framework inc.<br/>Reporting on NDC and progress in BTCs', start: '2019-01-01', group: 3},
+{id: 29, content: 'Creation of CSPT 2020', start: '2020-01-01', group: 1},
+{id: 30, content: 'Climate protests / strike and youth movements', start: '2020-01-01', group: 1},
+{id: 31, content: 'Aligning the green recovery to the CP', start: '2020-01-01', group: 2},
+{id: 32, content: 'Scaling up communications "Go Mehmet!"', start: '2020-01-01', group: 3},
+{id: 33, content: 'Merging of NDC SP and global policy teams', start: '2020-06-01', group: 1},
+{id: 34, content: 'New IPSA contract modality', start: '2020-06-01', group: 2},
+{id: 35, content: 'Integrating with other teams e.g. Climate and forests', start: '2020-06-01', group: 3},
+{id: 36, content: 'Creation of the comms team (2021)', start: '2021-01-01', group: 1},
+{id: 37, content: 'Development of NDC quality check-list (2020) & other NDC tools', start: '2020-06-01', group: 2},
+{id: 38, content: 'Building up regional teams', start: '2020-06-01', group: 3},
+{id: 39, content: 'Communication and knowledge management visibility', start: '2021-01-01', group: 1},
+{id: 40, content: 'Overcoming challenges during the pandemic', start: '2021-01-01', group: 2},
+{id: 41, content: 'EU\'s green deal', start: '2021-01-01', group: 3},
+{id: 42, content: 'Climate Promise II (+ donors)', start: '2021-06-01', group: 4},
+{id: 43, content: 'Expanding team', start: '2021-06-01', group: 1},
+{id: 44, content: 'Launch of the Climate Promise from pledge to impact', start: '2021-06-01', group: 2},
+{id: 45, content: 'Moving from internal funds to external mobilization', start: '2021-06-01', group: 3},
+{id: 46, content: 'Launch of Climate Promise website and Dear World Leaders initiative', start: '2021-09-01', group: 4},
+{id: 47, content: 'JSB (2021/2022) First non-western donor', start: '2021-01-01', group: 1},
+{id: 48, content: 'Working across different units / teams / bureaux', start: '2021-06-01', group: 2},
+{id: 49, content: 'Building new partnerships with new donors:<br/>Iceland, Latvia, UK, Belgium, Portugal, Japan, Norway', start: '2021-06-01', group: 3},
+{id: 50, content: 'Launch of loss and damage fund and global stocktake for NDCs', start: '2021-06-01', group: 4},
+{id: 51, content: 'Technical capacity increased', start: '2021-06-01', group: 5},
+{id: 52, content: 'More work with indigenous peoples and local communities', start: '2022-01-01', group: 1},
+{id: 53, content: 'Long-term support via CP2 (2022)', start: '2022-01-01', group: 2},
+{id: 54, content: 'Clear team structure', start: '2022-01-01', group: 3},
+{id: 55, content: 'Dear World Leaders exhibition at COP27 (2022) and Webby Awards', start: '2022-01-01', group: 4},
+{id: 56, content: '30X30 agreement on biodiversity at COP15 (2022)', start: '2022-01-01', group: 5},
+{id: 57, content: 'Reached 100k followers on Twitter @UNDPClimate - Dec 2022', start: '2022-12-01', group: 4},
+{id: 58, content: 'Data analysis management (dashboard)', start: '2023-01-01', group: 5},
+{id: 59, content: 'This retreat (2023)', start: '2023-03-01', group: 4},
+{id: 60, content: 'Copenhagen 2009', start: '2009-01-01', group: 6},
+{id: 61, content: 'Creation of GCF transition', start: '2009-01-01', group: 7},
+{id: 62, content: 'Vertical funds vs policy work -<br/>siloes and budget size ??', start: '2010-01-01', group: 6},
+{id: 63, content: 'Declining core funds that impact<br/>policy work which is part of UNDPs DNA', start: '2010-01-01', group: 7},
+{id: 64, content: 'Death of ETS 2012 - 2013. NAMAS move out of private sector', start: '2012-01-01', end: '2013-01-01', group: 6},
+{id: 65, content: 'End of EU support to Kyoto CDM - Carbon markets 2013 to 2014', start: '2013-01-01', end: '2014-01-01', group: 7},
+{id: 66, content: 'Transition of ?? private sector to public ownership', start: '2012-01-01', group: 6},
+{id: 67, content: 'Always ahead of the curve -> had to bring everyone along', start: '2012-01-01', group: 7},
+{id: 68, content: 'Inter-team collaboration and coordination', start: '2015-01-01', group: 6},
+{id: 69, content: 'Up to around 2015, not much on climate in G7 and other communiques?', start: '2015-01-01', group: 7},
+{id: 70, content: 'USA pulls out of the Paris Agreement', start: '2017-01-01', group: 6},
+{id: 71, content: 'Fossil fuels companies use misinformation tactics', start: '2017-01-01', group: 7},
+{id: 72, content: 'NCE re-structuring 2018/2019', start: '2018-01-01', end: '2019-01-01', group: 6},
+{id: 73, content: '2019 failed to renew adaptation fund agreement?', start: '2019-01-01', group: 7},
+{id: 74, content: 'Engaging with high emitters', start: '2019-01-01', group: 6},
+{id: 75, content: 'Pandemic created a virtual team from the start', start: '2019-01-01', group: 7},
+{id: 76, content: 'Working with the bureaus and partners', start: '2019-06-01', group: 6},
+{id: 77, content: 'Ambition of 100 countries with 15 people team', start: '2019-06-01', group: 7},
+{id: 78, content: 'Racial justice protests 2020', start: '2020-01-01', group: 6},
+{id: 79, content: 'Adjusting to the pandemic', start: '2020-01-01', group: 7},
+{id: 80, content: 'Climate protests / strike + youth movements', start: '2020-06-01', group: 6},
+{id: 81, content: 'Limited expertise beyond English and Spanish', start: '2020-01-01', group: 7},
+{id: 82, content: 'Covid 19 2020-ongoing', start: '2020-01-01', end: '2023-01-01', group: 8},
+{id: 83, content: 'Cancellation of the COP in 2020', start: '2020-09-01', group: 9},
+{id: 84, content: 'UNDP Bureaucracy! (ongoing)', start: '2020-01-01', end: '2023-06-01', group: 6},
+{id: 85, content: 'UNDP GEF audit 2020', start: '2020-06-01', group: 7},
+{id: 86, content: 'Lack of communication', start: '2020-09-01', group: 6},
+{id: 87, content: 'Less ambition at COP27', start: '2022-11-01', group: 6},
+{id: 88, content: 'COP results not living up to expectations', start: '2022-11-01', group: 7},
+{id: 89, content: 'Lack of finance', start: '2022-09-01', group: 6},
+{id: 90, content: 'Global context (energy crisis, humanitarian crisis,<br/>war, inflation, climate-induced disasters)', start: '2022-06-01', group: 7},
+{id: 91, content: 'Political issues relating to funds mobilization due to Ukraine war', start: '2022-03-01', group: 6},
+{id: 92, content: 'War in Ukraine and conflict in other countries', start: '2022-03-01', group: 7},
+{id: 93, content: 'Prioritising climate amidst concurrent crisis', start: '2022-09-01', group: 6},
+{id: 94, content: 'Working remotely as a team', start: '2022-09-01', group: 7},
+{id: 95, content: 'Transition to Quantum', start: '2023-01-01', group: 6},
+{id: 96, content: 'Coordination of the teamwork in a growing team', start: '2023-01-01', group: 7},
+{id: 97, content: 'NCE review', start: '2023-03-01', group: 6},
+{id: 98, content: 'So far from 1.5 :(', start: '2023-05-01', group: 7},
+{id: 99, content: 'IPCC First assessment report 1990', start: '1990-01-01', group: 10},
+{id: 100, content: 'NAPAS 2001', start: '2001-01-01', group: 10},
+{id: 101, content: '2004 - 2008 Start of CDM KYOTO CO2 -> Private sector', start: '2004-01-01', end: '2008-01-01', group: 10},
+{id: 102, content: 'Nobel peace prize for climate 2007', start: '2007-01-01', group: 11},
+{id: 103, content: 'Bali action plan publications in 6 UN languages -> UNDP positioning', start: '2009-01-01', group: 10}, 
+{id: 104, content: 'NAPS 2010', start: '2010-01-01', group: 10},
+{id: 105, content: 'Green climate fund created 2010', start: '2010-01-01', group: 11},
+{id: 106, content: 'INDCs 2013 - 2015', start: '2013-01-01', end: '2015-01-01', group: 11},
+{id: 107, content: 'UNDP / UNFCCC regional workshops on I/NDCS (2014 -15)', start: '2014-01-01', end: '2015-01-01', group: 10},
+{id: 108, content: 'Climate and SDGs including a pre-COP UNDP publication on climate change SDGs (2013)', start: '2013-01-01', group: 11},
+{id: 109, content: 'Paris Agreement 2015', start: '2015-01-01', group: 10},
+{id: 110, content: 'NDCs 2015 to 2020', start: '2015-01-01', end: '2020-01-01', group: 10},
+{id: 111, content: 'Our team being a trusted partner for governments', start: '2015-01-01', group: 11},
+{id: 112, content: 'Securing political commitment of<br/>governments for climate and NDCs', start: '2016-01-01', group: 11},
+{id: 113, content: 'Achim Steiner joins UNDP and elevates climate 2017', start: '2017-01-01', group: 10},
+{id: 114, content: "People's Climate Vote", start: '2017-01-01', group: 11},
+{id: 115, content: 'COP23 adopts a two-year gender action plan 2017', start: '2017-01-01', group: 12},
+{id: 116, content: 'UNDP recognized as leaders on NDCs 2016 - 2018', start: '2016-01-01', end: '2018-01-01', group: 10},
+{id: 117, content: 'Formulation of NAPs and NAMAS 2017 - 2018', start: '2017-01-01', end: '2018-01-01', group: 11},
+{id: 118, content: 'NDC Dialogues 2017 - 2019', start: '2017-01-01', end: '2019-01-01', group: 12},
+{id: 119, content: 'Regional dialogues transition to Climate week 2018', start: '2018-01-01', group: 13},
+{id: 120, content: 'COP25 adopts 5 year enhanced LWPG and its GAP on Gender 2019', start: '2019-01-01', group: 10},
+{id: 121, content: 'Growth of integrated national financing frameworks<br/>re potential for NDC finance (2019 onward)', start: '2019-01-01', group: 11},
+{id: 122, content: 'Launch of the EU 4 Climate Programme in EU EaP (2019)', start: '2019-01-01', group: 12},
+{id: 123, content: "SG's Climate ambition summit 2020", start: '2020-01-01', group: 10},
+{id: 124, content: 'NDC enhancement support', start: '2019-01-01', group: 11},
+{id: 125, content: 'Smashing the 100 country goal', start: '2019-01-01', group: 12},
+{id: 126, content: 'RFF / Green recovery', start: '2020-01-01', group: 10},
+{id: 127, content: 'NDC revision', start: '2020-01-01', group: 11},
+{id: 128, content: 'UNDP mobilises funds for CP2', start: '2021-01-01', group: 11},
+{id: 129, content: 'Green moonshot initiative', start: '2021-01-01', group: 12},
+{id: 130, content: 'State of Climate Ambition reports', start: '2021-10-01', group: 12},
+{id: 131, content: 'UNDP support to NDCs implementation', start: '2021-01-01', group: 13},
+{id: 132, content: '106 CP countries have submitted their NDCs', start: '2021-01-01', group: 13},
+{id: 133, content: 'State of Climate ambition (2021), and Regional snapshots (2022), and Just Transition report (2022)', start: '2021-01-01', end: '2022-12-01', group: 10},
+{id: 134, content: 'USA rejoins the Paris Agreement (2021)', start: '2021-01-01', group: 11},
+{id: 135, content: 'COP26 Launch of Dear World Leaders', start: '2021-11-01', group: 12},
+{id: 136, content: 'COP26 2021 Glasgow - most countries submitted the NDCs - momentum', start: '2021-11-01', group: 13},
+{id: 137, content: 'UNDP recognised as the main partner for NDC enhancement supporting<br/>120+ countries and territories (>100 NDCs submitted)', start: '2022-01-01', group: 10},
+{id: 138, content: 'Stockholm +50 national consultants', start: '2022-06-01', group: 11},
+{id: 139, content: 'Gender and NDCs report tool', start: '2022-10-01', group: 12},
+{id: 140, content: 'Stronger ambition and enhancing NDCs', start: '2021-11-01', group: 13},
+{id: 141, content: 'Being recognized as outstanding partners promoting<br/>youth engagement in NDC enhancement, in RCOYS and COP27 (by Youngo)', start: '2022-11-01', group: 10},
+{id: 142, content: 'Submission of revised NDCs ahead of COP26/27 (2021 - 2022)', start: '2021-01-01', end: '2022-12-01', group: 11},
+{id: 143, content: 'More integration across teams and thematic areas across UNDP and within CPT', start: '2022-01-01', group: 12},
+{id: 144, content: 'Lifting the freeze on new GEF Environmental Activity projects', start: '2022-01-01', group: 13},
+{id: 145, content: '6 new countries joined CP2 - Jamaica, Egypt, Palestine, Kosova, Senegal, India', start: '2022-01-01', group: 10},
+{id: 146, content: "New UNDP's strategic plan 2022 to 2025", start: '2022-01-01', end: '2025-01-01', group: 11},
+{id: 147, content: 'NCE review done (2022) and on the way (2023)', start: '2022-01-01', end: '2023-12-01', group: 12},
+{id: 148, content: 'Global stocktake in progress (2023)', start: '2023-01-01', group: 10},
+  ]);
+
+  var groups = new vis.DataSet([
+    {id: 1, content: 'Highlights'},
+    {id: 2, content: ''},
+    {id: 3, content: ''},
+    {id: 4, content: ''},
+    {id: 5, content: ''},
+    {id: 6, content: 'Difficulties'},
+    {id: 7, content: ''},
+    {id: 8, content: ''},
+    {id: 9, content: ''},
+    {id: 10, content: 'Wider context'},
+    {id: 11, content: ''},
+    {id: 12, content: ''},
+    {id: 13, content: ''}
+  ]);
+
+  var container = document.getElementById('visualization');
+  var options = {
+    start: '1991-01-01',
+    min: '1985-01-01',
+    end: '2023-01-01',
+    max: '2026-01-01',
+    zoomMin: 1000 * 60 * 60 * 24 * 365, // 1 year in milliseconds
+    zoomMax: 1000 * 60 * 60 * 24 * 365 * 10,  // 10 years in milliseconds
+    editable: false,
+    zoomable: false,
+    minHeight: "800px",
+    orientation: 'top'
+  };
+
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+
+
+</script>
+</body>
+</html>
