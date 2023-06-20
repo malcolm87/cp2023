@@ -1,20 +1,23 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>Timeline | items | Background areas with groups</title>
+  <title>Climate Promise Timeline</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600,700" rel="stylesheet">	
   <style>
     body, html {
       font-family: 'Roboto', arial, sans-serif;
       font-size: 16px;
     }
+
 .vis-item .vis-item-content {
     overflow: visible !important;
     white-space: normal !important;
     text-align:center;
     padding:8px 12px!important;
   }
-
+.vis-timeline {
+    cursor: grab!important;
+}
 .vis-time-axis .vis-text {font-size:28px;}
 .vis-labelset .vis-label .vis-inner {
 font-size: 20px;
@@ -118,6 +121,35 @@ font-weight: 500;
 <body>
 
 <h1>Climate Promise timeline</h1>
+<a style="text-decoration:none; color:unset; border:1px solid #bfbfbf; padding:8px; border-radius:8px; font-size:20px;" href="#" onclick="panLeft(); return false;">👈 Scroll left</a>
+<a style="text-decoration:none; color:unset; border:1px solid #bfbfbf; padding:8px; border-radius:8px; font-size:20px; float:right;" href="#" onclick="panRight(); return false;">Scroll right 👉</a>
+<br/><br/>
+
+
+<script>
+  function panLeft() {
+    var range = timeline.getWindow();
+    var interval = range.end - range.start;
+    timeline.setWindow({
+      start: range.start.valueOf() - interval * 0.2,
+      end: range.end.valueOf() - interval * 0.2
+    });
+  }
+
+
+  function panRight() {
+    var range = timeline.getWindow();
+    var interval = range.end - range.start;
+    timeline.setWindow({
+      start: range.start.valueOf() + interval * 0.2,
+      end: range.end.valueOf() + interval * 0.2
+    });
+  }
+
+
+</script>
+
+
 <div id="visualization"></div>
 
 <script>
@@ -141,7 +173,7 @@ font-weight: 500;
     {id: 17, content: 'Gender equality integration into the PA and NDCs dialogues.<br/>Pushing for a strong focus at the policy level / NDCS', start: '2015-01-01', group: 2},
     {id: 18, content: 'Equator prize at COP17 (Paris)', start: '2015-01-01', group: 3},
     {id: 20, content: 'Climate + SDG nexus', start: '2015-06-01', group: 2},
-    {id: 21, content: 'NDC implementation starts! 2016-17 - LECB NAMAS - EU-NDC project - NDC Support Programme', start: '2016-01-01', end: '2017-01-01', group: 1},
+    {id: 21, content: 'NDC implementation starts! 2016-17 - LECB NAMAS - EU-NDC project - NDC Support Programme', start: '2016-01-01', end: '2017-12-31', group: 1},
     {id: 22, content: 'UNDP accredited to GCF 2016', start: '2016-01-01', group: 3},
     {id: 23, content: 'NDC Support Programme 2017-23', start: '2017-01-01', end: '2023-01-01', group: 2},
     {id: 24, content: 'UNDP Engagement at UNFCCC COPS 2017 - 2019', start: '2017-01-01', end: '2019-01-01', group: 1},
@@ -185,7 +217,7 @@ font-weight: 500;
 {id: 62, content: 'Vertical funds vs policy work -<br/>siloes and budget size ??', start: '2010-01-01', group: 6},
 {id: 63, content: 'Declining core funds that impact<br/>policy work which is part of UNDPs DNA', start: '2010-01-01', group: 7},
 {id: 64, content: 'Death of ETS 2012 - 2013. NAMAS move out of private sector', start: '2012-01-01', end: '2013-01-01', group: 6},
-{id: 65, content: 'End of EU support to Kyoto CDM - Carbon markets 2013 to 2014', start: '2013-01-01', end: '2014-01-01', group: 7},
+{id: 65, content: 'End of EU support to Kyoto CDM - Carbon markets 2013 to 2014', start: '2013-01-01', end: '2014-12-31', group: 7},
 {id: 66, content: 'Transition of ?? private sector to public ownership', start: '2012-01-01', group: 6},
 {id: 67, content: 'Always ahead of the curve -> had to bring everyone along', start: '2012-01-01', group: 7},
 {id: 68, content: 'Inter-team collaboration and coordination', start: '2015-01-01', group: 6},
@@ -294,7 +326,7 @@ font-weight: 500;
     end: '2023-01-01',
     max: '2026-01-01',
     zoomMin: 1000 * 60 * 60 * 24 * 365, // 1 year in milliseconds
-    zoomMax: 1000 * 60 * 60 * 24 * 365 * 20,  // 10 years in milliseconds
+    zoomMax: 1000 * 60 * 60 * 24 * 365 * 20,  // 20 years in milliseconds
     editable: false,
     zoomable: true,
     minHeight: "800px",
@@ -303,8 +335,6 @@ font-weight: 500;
 
 
   var timeline = new vis.Timeline(container, items, groups, options);
-
-
 
 </script>
 </body>
